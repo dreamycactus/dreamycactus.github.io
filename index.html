@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="http://pixijs.download/release/pixi.js"></script>
+        <script type="https://raw.githubusercontent.com/pixijs/pixi-particles/master/dist/pixi-particles.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var counter = 0,
+                    $chars  = $(".test").children();
+
+                setInterval(function () {
+                    $chars.eq(counter).effect( "bounce", {times:1}, 500 );
+                    counter++;
+                    if (counter >= $chars.length) {
+                        counter = 0;
+                    }
+                }, 250);
+                
+            });
+        </script>
+        <style type="text/css">
+            .test{
+                font-family: "Lucida Console";
+                font-size: 72px;
+                color: #dea136;
+            }
+            .wrapper{
+                width: 50%;     /* specify a width! */
+                margin: 0 auto; /* center */
+            }
+            .ui-effects-wrapper {
+                display : inline-block;
+            }
+            body {
+                background-color: #f7eecf;
+            }
+        </style>
+    </head>
+    <body>
+    <br/>
+    <div class="wrapper">
+        <div class="test">
+            <span>M</span><span>E</span><span>R</span><span>R</span><span>Y </span><span>C</span><span>H</span><span>R</span><span>I</span><span>S</span><span>T</span><span>M</span><span>A</span><span>S</span>
+        </div>
+        <script language="javascript" type="text/javascript" src="js/myScript.js"></script>
+        </div>
+    </body>
+</html>
