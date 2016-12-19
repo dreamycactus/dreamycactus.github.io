@@ -1,4 +1,4 @@
-var renderer = PIXI.autoDetectRenderer(1200, 400, { antialias: true });
+var renderer = PIXI.autoDetectRenderer(700, 500, { antialias: true });
 renderer.backgroundColor = 0xf7eecf;
 renderer.view.style.position = 'absolute';
 renderer.view.style.left = '50%';
@@ -14,9 +14,12 @@ var MAXDEPTH = 0;
 var scale = 1;
 var mousePos = new PIXI.Point();
 var stale = true;
+var unlocked = false;
 stage.mousemove = function(mouseData) {
     mouseData.data.getLocalPosition(stage, mousePos);
-    // stale = true;
+    if (unlocked){
+      stale = true;
+    }
 }
 // Click on the canvas to trigger
 var canvas = document.body;
@@ -25,6 +28,13 @@ canvas.addEventListener('mouseup', function(e){
     emitter.emit = true;
     emitter.resetPositionTracking();
     emitter.updateOwnerPos(e.offsetX || e.layerX, e.offsetY || e.layerY);
+    if (MAXDEPTH<=13) {
+        MAXDEPTH++;
+        stale = true;
+    } else {
+      unlocked = true;
+    }
+
 });
 var left = keyboard(37),
       up = keyboard(38),
@@ -112,8 +122,10 @@ animate();
 function animate() {
     requestAnimationFrame( animate );
     if (stale) {
-        MAXDEPTH = Math.floor((mousePos.x+150)/40)+1;
-        MAXDEPTH = Math.min(Math.max(MAXDEPTH, 1), 13);
+        if (unlocked) {
+            MAXDEPTH = Math.floor((mousePos.x+150)/40)+1;
+            MAXDEPTH = Math.min(Math.max(MAXDEPTH, 1), 13);
+        }
         graphics.clear();
         branch(x,350, 60+x, 400, 0);
         stale = false;
@@ -184,7 +196,6 @@ function keyboard(keyCode) {
     }
     event.preventDefault();
   };
-
   //Attach event listeners
   window.addEventListener(
     "keydown", key.downHandler.bind(key), false
