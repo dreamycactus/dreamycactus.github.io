@@ -18,8 +18,10 @@ stage.mousemove = function(mouseData) {
     mouseData.data.getLocalPosition(stage, mousePos);
     stale = true;
 }
-stage.mousedown = function(mouseData) {
-  emitter.updateSpawnPos(mousePos.x, mousePos.y);
+stage.mouseup = function(mouseData) {
+  emitter.emit = true;
+  emitter.resetPositionTracking();
+  emitter.updateOwnerPos(mousePos.x, mousePos.y);
 }
 var left = keyboard(37),
       up = keyboard(38),
