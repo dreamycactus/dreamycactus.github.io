@@ -1,4 +1,4 @@
-var renderer = PIXI.autoDetectRenderer(500, 500, { antialias: true });
+var renderer = PIXI.autoDetectRenderer(1200, 600, { antialias: true });
 renderer.backgroundColor = 0xf7eecf;
 renderer.view.style.position = 'absolute';
 renderer.view.style.left = '50%';
@@ -16,7 +16,7 @@ var mousePos = new PIXI.Point();
 var stale = true;
 stage.mousemove = function(mouseData) {
     mouseData.data.getLocalPosition(stage, mousePos);
-    stale = true;
+    // stale = true;
 }
 stage.mouseup = function(mouseData) {
   emitter.emit = true;
@@ -56,47 +56,47 @@ var emitter = new PIXI.particles.Emitter(
     // Emitter configuration, edit this to change the look
     // of the emitter
     {
-        alpha: {
-            start: 0.8,
-            end: 0.1
+        "alpha": {
+            "start": 0.8,
+            "end": 0.1
         },
-        scale: {
-            start: 1,
-            end: 0.3
+        "scale": {
+            "start": 1,
+            "end": 0.3
         },
-        color: {
-            start: "fb1010",
-            end: "f5b830"
+        "color": {
+            "start": "fb1010",
+            "end": "f5b830"
         },
-        speed: {
-            start: 200,
-            end: 100
+        "speed": {
+            "start": 200,
+            "end": 100
         },
-        startRotation: {
-            min: 0,
-            max: 360
+        "startRotation": {
+            "min": 0,
+            "max": 360
         },
-        rotationSpeed: {
-            min: 0,
-            max: 0
+        "rotationSpeed": {
+            "min": 0,
+            "max": 0
         },
-        lifetime: {
-            min: 1,
-            max: 3
+        "lifetime": {
+            "min": 0.5,
+            "max": 0.5
         },
-        frequency: 0.008,
-        emitterLifetime: 0.31,
-        maxParticles: 1000,
-        pos: {
-            x: 0,
-            y: 0
+        "frequency": 0.008,
+        "emitterLifetime": 0.31,
+        "maxParticles": 1000,
+        "pos": {
+            "x": 0,
+            "y": 0
         },
-        addAtBack: false,
-        spawnType: "circle",
-        spawnCircle: {
-            x: 0,
-            y: 0,
-            r: 10
+        "addAtBack": false,
+        "spawnType": "circle",
+        "spawnCircle": {
+            "x": 0,
+            "y": 0,
+            "r": 10
         }
     }
 );
