@@ -1,9 +1,8 @@
 var renderer = PIXI.autoDetectRenderer(540, 500, { antialias: true });
 renderer.backgroundColor = 0xf7eecf;
-renderer.view.style.position = 'absolute';
 renderer.view.style.left = '50%';
 renderer.view.style.top = '50%';
-renderer.view.style.transform = 'translate3d( -50%, -50%, 0 )';
+renderer.view.style.margin = '0 auto';
 document.body.appendChild(renderer.view);
 
 // create the root of the scene graph
