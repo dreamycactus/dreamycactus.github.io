@@ -34,7 +34,18 @@ canvas.addEventListener('mouseup', function(e){
     } else {
       unlocked = true;
     }
-
+});
+canvas.addEventListener('ontouchstart', function(e){
+    if(!emitter) return;
+    emitter.emit = true;
+    emitter.resetPositionTracking();
+    emitter.updateOwnerPos(e.offsetX || e.layerX, e.offsetY || e.layerY);
+    if (MAXDEPTH<=13) {
+        MAXDEPTH++;
+        stale = true;
+    } else {
+      unlocked = true;
+    }
 });
 var left = keyboard(37),
       up = keyboard(38),
