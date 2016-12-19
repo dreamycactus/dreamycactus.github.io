@@ -1,4 +1,4 @@
-var renderer = PIXI.autoDetectRenderer(1200, 600, { antialias: true });
+var renderer = PIXI.autoDetectRenderer(1200, 400, { antialias: true });
 renderer.backgroundColor = 0xf7eecf;
 renderer.view.style.position = 'absolute';
 renderer.view.style.left = '50%';
@@ -18,11 +18,14 @@ stage.mousemove = function(mouseData) {
     mouseData.data.getLocalPosition(stage, mousePos);
     // stale = true;
 }
-stage.mouseup = function(mouseData) {
-  emitter.emit = true;
-  emitter.resetPositionTracking();
-  emitter.updateOwnerPos(mousePos.x, mousePos.y);
-}
+// Click on the canvas to trigger
+var canvas = document.body;
+canvas.addEventListener('mouseup', function(e){
+    if(!emitter) return;
+    emitter.emit = true;
+    emitter.resetPositionTracking();
+    emitter.updateOwnerPos(e.offsetX || e.layerX, e.offsetY || e.layerY);
+});
 var left = keyboard(37),
       up = keyboard(38),
       right = keyboard(39),
