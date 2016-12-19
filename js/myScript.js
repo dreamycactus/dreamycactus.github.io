@@ -35,7 +35,7 @@ canvas.addEventListener('mouseup', function(e){
       unlocked = true;
     }
 });
-canvas.addEventListener('ontouchstart', function(e){
+canvas.addEventListener('touchstart', function(e){
     if(!emitter) return;
     emitter.emit = true;
     emitter.resetPositionTracking();
