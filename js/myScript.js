@@ -1,4 +1,4 @@
-var renderer = PIXI.autoDetectRenderer(700, 500, { antialias: true });
+var renderer = PIXI.autoDetectRenderer(540, 500, { antialias: true });
 renderer.backgroundColor = 0xf7eecf;
 renderer.view.style.position = 'absolute';
 renderer.view.style.left = '50%';
