@@ -123,7 +123,7 @@ function animate() {
     requestAnimationFrame( animate );
     if (stale) {
         if (unlocked) {
-            MAXDEPTH = Math.floor((mousePos.x+150)/40)+1;
+            MAXDEPTH = Math.floor((mousePos.x+50)/40)+1;
             MAXDEPTH = Math.min(Math.max(MAXDEPTH, 1), 13);
         }
         graphics.clear();
