@@ -15,8 +15,11 @@ var scale = 1;
 var mousePos = new PIXI.Point();
 var stale = true;
 stage.mousemove = function(mouseData) {
-    mouseX = mouseData.data.getLocalPosition(stage, mousePos);
+    mouseData.data.getLocalPosition(stage, mousePos);
     stale = true;
+}
+stage.mousedown = function(mouseData) {
+  emitter.updateSpawnPos(mousePos.x, mousePos.y);
 }
 var left = keyboard(37),
       up = keyboard(38),
@@ -76,8 +79,8 @@ var emitter = new PIXI.particles.Emitter(
             max: 0
         },
         lifetime: {
-            min: 0.5,
-            max: 0.5
+            min: 1,
+            max: 3
         },
         frequency: 0.008,
         emitterLifetime: 0.31,
